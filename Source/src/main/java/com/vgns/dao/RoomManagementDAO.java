@@ -9,7 +9,7 @@ import com.vgns.pojo.Room;
 public class RoomManagementDAO {
 	
 	
-	public static List<Room> getAllRooms()
+	public static List<Room> getAllRooms()     //method to get all rooms available
 	{
 		List<Room> RoomList = new ArrayList<Room>();
 		try
