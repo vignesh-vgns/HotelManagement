@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="com.vgns.dao.RoomManagementDAO"%>
+<%@page import="com.vgns.pojo.Room"%>
+<%@page import="java.util.*"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Edit Room</title>
+</head>
+<body>
+	<%@ include file="header.jsp" %>
+	<%
+		String floorNumber = request.getParameter("FloorNumber");
+		Room room = RoomManagementDAO.getRoomById(floorNumber);
+		
+	%>
+	<div align="center">
+		<form action="processEditRoom.jsp" method="post">
+			<table class="productTable">
+				<thead>
+					<tr>
+						<th colspan="2">
+							Room Details
+						</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>Floor Number</td>
+					<td><input type="text" name="FloorNumber" size="20"
+						value="${room.getFloorNumber()}" class="productTextField"/></td>
+				</tr>
+				<tr>
+					<td>Room Type</td>
+					<td><input type="text" name="RoomType" size="20"
+						value="${room.getRoomType()}" class="productTextField"/></td>
+				</tr>
+				<tr>
+					<td>Available Date</td>
+					<td><input type="text" name="AvailDate" size="20"
+						value="${room.getAvailDate()}" class="productTextField"/></td>
+				</tr>
+				<tr>
+					<td>Price Per Day</td>
+					<td><input type="text" name="PricePerDay" size="20"
+						value="${room.getPricePerDay()}" class="productTextField"/></td>
+				</tr>
+			</table>
+			<button class="actionBtn" style="margin-top:10px">Save</button>
+		</form>
+	</div>
+</body>
+</html>
