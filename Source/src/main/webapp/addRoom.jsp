@@ -13,7 +13,7 @@
 	<%@ include file="header.jsp" %>
 
 	<div align="center">
-		<form action="processAddRoom.jsp" method="post">
+		<form action="AddServlet" method="post">
 			<table class="productTable">
 				<thead>
 					<tr>
@@ -22,6 +22,11 @@
 						</th>
 					</tr>
 				</thead>
+				<tr>
+					<td>Room ID</td>
+					<td><input type="text" name="roomId" size="20"
+							   class="productTextField" /></td>
+				</tr>
 				<tr>
 					<td>Floor Number</td>
 					<td><input type="text" name="FloorNumber" size="20"

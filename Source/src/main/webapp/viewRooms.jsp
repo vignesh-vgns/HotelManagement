@@ -15,11 +15,13 @@
 	<table align="center" class="productTable">
 		<thead>
 			<tr>
+				<th>Room ID</th>
 				<th>Floor Number</th>
 				<th>Room Type</th>
 				<th>Available Date</th>
 				<th>Price Per Day</th>
 				<th colspan="2">Actions</th>
+				<th>book here</th>
 			</tr> 
 		</thead>
 		<%
@@ -27,12 +29,14 @@
 			for (Room p : RoomList) {
 		%>
 		<tr>
+			<td><%=p.getroomId()%></td>
 			<td><%=p.getFloorNumber()%></td>
 			<td><%=p.getRoomType()%></td>
 			<td><%=p.getAvailDate()%></td>
 			<td><%= p.getPricePerDay() %></td>
-			<td><button class="actionBtn" onclick="location.href = 'editRoom.jsp?FloorNumber=<%= p.getFloorNumber()%>';">Edit</button></td>
-			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?FloorNumber=<%= p.getFloorNumber()%>';">Delete</button></td>
+			<td><button class="actionBtn" onclick="location.href = 'editRoom.jsp?roomId=<%= p.getroomId()%>';">Edit</button></td>
+			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?roomId=<%= p.getroomId()%>';">Delete</button></td>
+			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?FloorNumber =<%= p.getFloorNumber()%>';">BOOK</button></td>
 		</tr>
 		<%
 			}

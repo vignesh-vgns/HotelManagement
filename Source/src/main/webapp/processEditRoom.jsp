@@ -1,16 +1,15 @@
 <%@page import="com.vgns.dao.RoomManagementDAO"%>
 <%@page import="com.vgns.pojo.Room"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="java.util.Date"%>
+
 
 <%
+	Integer roomId = Integer.parseInt(request.getParameter("roomId"));
 	String FloorNumber = request.getParameter("FloorNumber");
 	String RoomType = request.getParameter("RoomType");
 	String AvailDate=request.getParameter("AvailDate");
 	Integer PricePerDay = Integer.parseInt(request.getParameter("PricePerDay"));
 
-	Room Room = new Room(FloorNumber,RoomType,AvailDate,PricePerDay);
+	Room Room = new Room(roomId,FloorNumber,RoomType,AvailDate,PricePerDay);
 
 int status = RoomManagementDAO.updateRoom(Room);
 if(status == 1)

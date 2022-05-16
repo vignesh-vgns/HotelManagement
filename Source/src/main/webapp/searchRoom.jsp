@@ -13,6 +13,8 @@
 <%@ include file="header.jsp" %>  
 <div align="center" style="padding-top:25px;">
 	<form action="searchRoom.jsp">
+
+
 		<label>Enter Floor Number: </label>
 		<input type="text" name="FloorNumber" size="25" class="searchTextField"/>
 
@@ -31,6 +33,7 @@
 	<table align="center" class="productTable">
 		<thead>
 			<tr>
+				<th>Room ID</th>
 				<th>Floor Number</th>
 				<th>Room Type</th>
 				<th>Date Available</th>
@@ -45,9 +48,9 @@
 			String AvailDate = request.getParameter("AvailDate");
 			String PricePerDay = request.getParameter("PricePerDay");
 
-			if(floor_no!=null)
+			if(floor_no != "")
 			{
-				p = RoomManagementDAO.getRoomById(floor_no);
+				p = RoomManagementDAO.getRoomByFloorNum(floor_no);
 			}
 			if( RoomType!="") {
 				p = RoomManagementDAO.getRoomByType(RoomType);
@@ -63,12 +66,14 @@
 				for (Room i: p) {
 		%>
 		<tr>
+			<td><%=i.getroomId()%></td>
 			<td><%=i.getFloorNumber()%></td>
 			<td><%=i.getRoomType()%></td>
 			<td><%=i.getAvailDate()%></td>
 			<td><%= i.getPricePerDay() %></td>
-			<td><button class="actionBtn" onclick="location.href = 'editRoom.jsp?FloorNumber=<%= i.getFloorNumber()%>';">Edit</button></td>
-			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?FloorNumber=<%= i.getFloorNumber()%>';">Delete</button></td>
+			<td><button class="actionBtn" onclick="location.href = 'editRoom.jsp?roomId=<%= i.getroomId()%>';">Edit</button></td>
+			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?roomId=<%= i.getroomId()%>';">Delete</button></td>
+			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?FloorNumber=<%= i.getFloorNumber()%>';">BOOK</button></td>
 		</tr>
 		<%
 			}

@@ -2,15 +2,24 @@ package com.vgns.pojo;
 
 
 public class Room {
-
+	int roomId;
 	String floorNumber;
 	String roomType;
 	String availDate;
 	Integer pricePerDay;
 
-//creating constructor
-	public Room(String floorNumber, String roomType, String availDate, Integer pricePerDay) {
+    public Room(){
+		String roomId;
+		String floorNumber;
+		String roomType;
+		String availDate;
+		Integer pricePerDay;
+	}
+
+	//creating constructor
+	public Room(int roomId,String floorNumber, String roomType, String availDate, Integer pricePerDay) {
 		super();
+		this.roomId=roomId;
 		this.floorNumber = floorNumber;
 		this.roomType = roomType;
 		this.availDate = availDate;
@@ -18,6 +27,13 @@ public class Room {
 	}
 
 	//getter and setter methods
+	public int getroomId() {
+		return roomId;
+	}
+
+	public void setroomId(Integer roonId) {
+		this.roomId = roomId;
+	}
 	public String getFloorNumber() {
 		return floorNumber;
 	}
@@ -55,6 +71,4 @@ public class Room {
 		return "room [floorNumber=" + floorNumber + ", roomType=" + roomType + ", availDate="
 				+ availDate + ", pricePerDay=" + pricePerDay + "]";
 	}
-
-    
 }

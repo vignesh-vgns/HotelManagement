@@ -12,12 +12,12 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<%
-		String floorNumber = request.getParameter("FloorNumber");
-		Room room = RoomManagementDAO.getRoomById(floorNumber);
+		Integer RoomId = Integer.parseInt(request.getParameter("roomId"));
+		Room room = RoomManagementDAO.getRoomById(RoomId);
 		
 	%>
 	<div align="center">
-		<form action="processEditRoom.jsp" method="post">
+		<form action="EditServlet" method="post">
 			<table class="productTable">
 				<thead>
 					<tr>
@@ -26,6 +26,11 @@
 						</th>
 					</tr>
 				</thead>
+				<tr>
+					<td>Room Id</td>
+					<td><input type="text" name="roomId" size="20"
+							   value="${room.getroomId()}" class="productTextField"/></td>
+				</tr>
 				<tr>
 					<td>Floor Number</td>
 					<td><input type="text" name="FloorNumber" size="20"

@@ -3,12 +3,12 @@
 
 <%
 
-String floor_no = request.getParameter("FloorNumber");
+Integer roomId = Integer.parseInt(request.getParameter("roomId"));
 
-int status = RoomManagementDAO.deleteRoom(floor_no);
+int status = RoomManagementDAO.deleteRoom(roomId);
 if(status == 1)
 {
-	response.sendRedirect("viewRooms.jsp"); 
+	 response.sendRedirect("viewRooms.jsp");
 }
 else
 {

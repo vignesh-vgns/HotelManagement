@@ -3,12 +3,7 @@ package com.vgns.dbutil;
 import java.sql.*;
 
 public class DBUtil {
-
-//    private String jdbcURL = "org.postgresql.Driver";
-//    private String DB_URL ="jdbc:postgresql://localhost/users";
-//    private String jdbcUsername = "postgres";
-//    private String jdbcPassword = "1901257";
-	public static Connection getConnection()
+	public static Connection getConnection()  //method for DB Connection
 	{
 		Connection conn = null;
 		try 
@@ -26,12 +21,11 @@ public class DBUtil {
 	}
 	
 	
-	public static void closeConnection(Connection conn)
+	public static void closeConnection(Connection conn)   //closing Connection object
 	{
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

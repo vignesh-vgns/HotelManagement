@@ -3,13 +3,11 @@ package com.vgns.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import com.vgns.dbutil.DBUtil;
 import com.vgns.pojo.LoginInfo;
 
 public class LoginDAO {
-
-	public static boolean isUserValid(LoginInfo userDetails)
+	public static boolean isUserValid(LoginInfo userDetails)   //validate the user details from user table
 	{
 		boolean validStatus = false;
 		try
