@@ -10,7 +10,10 @@
 <title>Search Room</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>  
+<%@ include file="header.jsp" %>
+
+<h3 align="center">Search for Rooms by entering either one of the following<br> 'Floor number','Room type','Date','Price' </h3>
+
 <div align="center" style="padding-top:25px;">
 	<form action="searchRoom.jsp">
 
@@ -21,12 +24,12 @@
 		<label>Enter Room Type: </label>
 		<input type="text" name="RoomType" size="25" class="searchTextField"/>
 
-		<label>Enter Date: (dd-mm-yyyy)</label>
+		<label>Enter Checkin Date: (dd-mm-yyyy)</label>
 		<input type="text" name="AvailDate" size="25" class="searchTextField"/>
 
 		<label>Enter Price Range: </label>
 		<input type="text" name="PricePerDay" size="25" class="searchTextField"/>
-
+        <br>
 		<button class="actionBtn">Search</button>
 	</form>
 </div> 

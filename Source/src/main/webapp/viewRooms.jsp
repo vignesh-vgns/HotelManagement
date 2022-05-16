@@ -10,8 +10,10 @@
 <title>View Rooms</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>  
-
+<%@ include file="header.jsp" %>
+<%
+	String userName = (String)session.getAttribute("userName");
+%>
 	<table align="center" class="productTable">
 		<thead>
 			<tr>
@@ -19,8 +21,10 @@
 				<th>Floor Number</th>
 				<th>Room Type</th>
 				<th>Available Date</th>
-				<th>Price Per Day</th>
+				<th>Minimum Price</th>
+				<% if(Objects.equals(userName, "admin")) { %>
 				<th colspan="2">Actions</th>
+				<% } %>
 				<th>book here</th>
 			</tr> 
 		</thead>
@@ -34,9 +38,11 @@
 			<td><%=p.getRoomType()%></td>
 			<td><%=p.getAvailDate()%></td>
 			<td><%= p.getPricePerDay() %></td>
+			<% if(Objects.equals(userName, "admin")) { %>
 			<td><button class="actionBtn" onclick="location.href = 'editRoom.jsp?roomId=<%= p.getroomId()%>';">Edit</button></td>
 			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?roomId=<%= p.getroomId()%>';">Delete</button></td>
-			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?FloorNumber =<%= p.getFloorNumber()%>';">BOOK</button></td>
+			<% } %>
+			<td><button class="actionBtn" onclick="location.href = 'addBook.jsp?roomId=<%= p.getroomId()%>';">BOOK</button></td>
 		</tr>
 		<%
 			}

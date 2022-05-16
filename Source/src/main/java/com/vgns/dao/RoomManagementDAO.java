@@ -38,7 +38,7 @@ public class RoomManagementDAO {
 			try
 			{
 				Connection conn = DBUtil.getConnection();
-				PreparedStatement ps= conn.prepareStatement("SELECT * FROM room WHERE \'roomId\' = ?");
+				PreparedStatement ps= conn.prepareStatement("SELECT * FROM room WHERE roomid = ?");
 		 		ps.setInt(1, roomId);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next())
@@ -54,7 +54,28 @@ public class RoomManagementDAO {
 			return room;
 
 	}
+	public static Room getBookById(Integer roomId)  //get room details by room ID
+	{
+		Room room = null;
+		try
+		{
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps= conn.prepareStatement("SELECT * FROM books WHERE roomid = ?");
+			ps.setInt(1, roomId);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				room = new Room(rs.getInt("roomId"),rs.getString("floorNumber"),rs.getString("RoomType"),rs.getString("AvailDate"),rs.getInt("PricePerDay"));
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 
+		return room;
+
+	}
 	public static List<Room> getRoomByFloorNum(String FloorNum)   //To get all the rooms having the specific Floor number
 	{
 		List<Room> room = new ArrayList<Room>();
@@ -158,7 +179,7 @@ public class RoomManagementDAO {
 		try
 		{
 			Connection conn = DBUtil.getConnection();
-			PreparedStatement ps= conn.prepareStatement("INSERT INTO Room VALUES(?,?,?,?,?)");
+			PreparedStatement ps= conn.prepareStatement("INSERT INTO Room(roomid,floornumber,roomtype,availdate,priceperday) VALUES(?,?,?,?,?)");
 			ps.setInt(1,Room.getroomId());
 			ps.setString(2, Room.getFloorNumber());
 			ps.setString(3, Room.getRoomType());
@@ -179,7 +200,7 @@ public class RoomManagementDAO {
 		try
 		{
 			Connection conn = DBUtil.getConnection();
-			PreparedStatement ps= conn.prepareStatement("UPDATE room SET roomId =?, FloorNumber =?, RoomType=? , AvailDate =?, PricePerDay=? WHERE roomId=?");
+			PreparedStatement ps= conn.prepareStatement("UPDATE room SET roomid =?, floornumber =?, roomtype=? , availdate =?, PricePerDay=? WHERE roomid=?");
 			ps.setInt(1 ,Room.getroomId());
 			ps.setString(2, Room.getFloorNumber());
 			ps.setString(3, Room.getRoomType());
@@ -202,7 +223,68 @@ public class RoomManagementDAO {
 		{
 			System.out.println(FNumber);
 			Connection conn = DBUtil.getConnection();
-			PreparedStatement ps= conn.prepareStatement("DELETE FROM room WHERE roomId=?");
+			PreparedStatement ps= conn.prepareStatement("DELETE FROM room WHERE roomid=?");
+			ps.setInt(1 , FNumber);
+			status = ps.executeUpdate();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return status;
+	}
+
+	public static List<Room> getAllBooks() {
+		List<Room> RoomList = new ArrayList<Room>();
+		try
+		{
+			Connection conn = DBUtil.getConnection();    //Get connected to DB
+			Statement st= conn.createStatement();
+			ResultSet rs= st.executeQuery("SELECT * FROM books;");
+			while(rs.next())
+			{
+				Room Room = new Room(rs.getInt("roomId"),rs.getString("FloorNumber"),rs.getString("RoomType"),rs.getString("AvailDate"),rs.getInt("PricePerDay"));
+				RoomList.add(Room);
+			}
+
+			DBUtil.closeConnection(conn);     //closing DB connection
+
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return RoomList;
+	}
+	public static int addBook(Room Room)    //add new room into db
+	{
+		int status = 0;
+		try
+		{
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps= conn.prepareStatement("INSERT INTO books(roomid,floornumber,roomtype,availdate,priceperday) VALUES(?,?,?,?,?)");
+			ps.setInt(1,Room.getroomId());
+			ps.setString(2, Room.getFloorNumber());
+			ps.setString(3, Room.getRoomType());
+			ps.setString(4, Room.getAvailDate());
+			ps.setInt(5, Room.getPricePerDay());
+			status = ps.executeUpdate();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return status;
+	}
+	public static int deleteBook(int FNumber)     //delete the specific room detail
+	{
+		int status = 0;
+		try
+		{
+			System.out.println(FNumber);
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps= conn.prepareStatement("DELETE FROM books WHERE roomid = ?");
 			ps.setInt(1 , FNumber);
 			status = ps.executeUpdate();
 		}

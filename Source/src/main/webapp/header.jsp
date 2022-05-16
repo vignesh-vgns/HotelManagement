@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 	<%
 	if(session.getAttribute("userName") == null)
 	{
@@ -16,9 +17,14 @@
 	<nav class="navbar">
 		<ul class="navbar-nav">
 			<li><a href="home.jsp">Home</a></li>
+			<% if(Objects.equals((String)session.getAttribute("userName"), "admin"))
+			{
+			%>
 			<li><a href="addRoom.jsp">Add Room</a></li>
+			<%}%>
 			<li><a href="viewRooms.jsp">View Rooms</a></li>
 			<li><a href="searchRoom.jsp">Search Rooms</a></li>
+			<li><a href="viewBooks.jsp">Bookings</a></li>
 			<li style="float:right;margin-right:10px"><a href="logout.jsp">Logout</a></li>
 		</ul>
 	</nav>
