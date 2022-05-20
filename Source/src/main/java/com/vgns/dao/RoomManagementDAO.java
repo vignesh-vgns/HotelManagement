@@ -183,7 +183,7 @@ public class RoomManagementDAO {
 			ps.setInt(1,Room.getroomId());
 			ps.setString(2, Room.getFloorNumber());
 			ps.setString(3, Room.getRoomType());
-			ps.setString(4, Room.getAvailDate());
+			ps.setString(4, Room.getAC());
 			ps.setInt(5, Room.getPricePerDay());
 			status = ps.executeUpdate();
 		}
@@ -204,7 +204,7 @@ public class RoomManagementDAO {
 			ps.setInt(1 ,Room.getroomId());
 			ps.setString(2, Room.getFloorNumber());
 			ps.setString(3, Room.getRoomType());
-			ps.setString(4, Room.getAvailDate());
+			ps.setString(4, Room.getAC());
 			ps.setInt(5, Room.getPricePerDay());
 			ps.setInt(6 ,Room.getroomId());
 			status = ps.executeUpdate();
@@ -257,26 +257,7 @@ public class RoomManagementDAO {
 
 		return RoomList;
 	}
-	public static int addBook(Room Room)    //add new room into db
-	{
-		int status = 0;
-		try
-		{
-			Connection conn = DBUtil.getConnection();
-			PreparedStatement ps= conn.prepareStatement("INSERT INTO books(roomid,floornumber,roomtype,availdate,priceperday) VALUES(?,?,?,?,?)");
-			ps.setInt(1,Room.getroomId());
-			ps.setString(2, Room.getFloorNumber());
-			ps.setString(3, Room.getRoomType());
-			ps.setString(4, Room.getAvailDate());
-			ps.setInt(5, Room.getPricePerDay());
-			status = ps.executeUpdate();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return status;
-	}
+
 	public static int deleteBook(int FNumber)     //delete the specific room detail
 	{
 		int status = 0;

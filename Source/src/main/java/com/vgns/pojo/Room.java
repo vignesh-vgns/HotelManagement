@@ -5,24 +5,24 @@ public class Room {
 	int roomId;
 	String floorNumber;
 	String roomType;
-	String availDate;
+	String AC;
 	Integer pricePerDay;
 
     public Room(){
 		String roomId;
 		String floorNumber;
 		String roomType;
-		String availDate;
+		String AC;
 		Integer pricePerDay;
 	}
 
 	//creating constructor
-	public Room(int roomId,String floorNumber, String roomType, String availDate, Integer pricePerDay) {
+	public Room(int roomId,String floorNumber, String roomType, String AC, Integer pricePerDay) {
 		super();
 		this.roomId=roomId;
 		this.floorNumber = floorNumber;
 		this.roomType = roomType;
-		this.availDate = availDate;
+		this.AC = AC;
 		this.pricePerDay = pricePerDay;
 	}
 
@@ -50,12 +50,12 @@ public class Room {
 		this.roomType = roomType;
 	}
 
-	public String getAvailDate() {
-		return availDate;
+	public String getAC() {
+		return AC ;
 	}
 
-	public void setAvailDate(String availDate) {
-		this.availDate = availDate;
+	public void setAC(String AC) {
+		this.AC = AC;
 	}
 
 	public Integer getPricePerDay() {
@@ -69,6 +69,6 @@ public class Room {
 	@Override
 	public String toString() {
 		return "room [floorNumber=" + floorNumber + ", roomType=" + roomType + ", availDate="
-				+ availDate + ", pricePerDay=" + pricePerDay + "]";
+				+ AC + ", pricePerDay=" + pricePerDay + "]";
 	}
 }

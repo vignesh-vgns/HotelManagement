@@ -15,7 +15,7 @@ public class LoginDAO {
 			Connection conn = DBUtil.getConnection();
 			ResultSet rs;
 			Statement st = conn.createStatement();
-				rs = st.executeQuery("SELECT * FROM login WHERE username = '" + userDetails.getUserName() + "' AND password = '" + userDetails.getPassword() + "'");
+				rs = st.executeQuery("SELECT * FROM login WHERE name = '" + userDetails.getUserName() + "' AND password = '" + userDetails.getPassword() + "'");
 
 			while(rs.next())
 			{

@@ -24,8 +24,8 @@
 		<label>Enter Room Type: </label>
 		<input type="text" name="RoomType" size="25" class="searchTextField"/>
 
-		<label>Enter Checkin Date: (dd-mm-yyyy)</label>
-		<input type="text" name="AvailDate" size="25" class="searchTextField"/>
+		<label>Enter AC/Non-AC</label>
+		<input type="text" name="AC" size="25" class="searchTextField"/>
 
 		<label>Enter Price Range: </label>
 		<input type="text" name="PricePerDay" size="25" class="searchTextField"/>
@@ -39,7 +39,7 @@
 				<th>Room ID</th>
 				<th>Floor Number</th>
 				<th>Room Type</th>
-				<th>Date Available</th>
+				<th>AC/Non-AC</th>
 				<th>Price Per Day</th>
 				<th colspan="2">Actions</th>
 			</tr> 
@@ -48,7 +48,7 @@
 			List<Room> p = null;
 			String floor_no = request.getParameter("FloorNumber");
 			String RoomType = request.getParameter("RoomType");
-			String AvailDate = request.getParameter("AvailDate");
+			String AC = request.getParameter("AC");
 			String PricePerDay = request.getParameter("PricePerDay");
 
 			if(floor_no != "")
@@ -58,8 +58,8 @@
 			if( RoomType!="") {
 				p = RoomManagementDAO.getRoomByType(RoomType);
 			}
-			if( AvailDate!="") {
-				p = RoomManagementDAO.getRoomByDate(AvailDate);
+			if( AC!="") {
+				p = RoomManagementDAO.getRoomByDate(AC);
 			}
 			if( PricePerDay!=""){
 				p = RoomManagementDAO.getRoomByPrice(PricePerDay);
@@ -72,7 +72,7 @@
 			<td><%=i.getroomId()%></td>
 			<td><%=i.getFloorNumber()%></td>
 			<td><%=i.getRoomType()%></td>
-			<td><%=i.getAvailDate()%></td>
+			<td><%=i.getAC()%></td>
 			<td><%= i.getPricePerDay() %></td>
 			<td><button class="actionBtn" onclick="location.href = 'editRoom.jsp?roomId=<%= i.getroomId()%>';">Edit</button></td>
 			<td><button class="actionBtn" onclick="location.href = 'processDeleteRoom.jsp?roomId=<%= i.getroomId()%>';">Delete</button></td>

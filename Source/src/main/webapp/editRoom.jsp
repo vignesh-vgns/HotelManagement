@@ -29,27 +29,27 @@
 				<tr>
 					<td>Room Id</td>
 					<td><input type="text" name="roomId" size="20"
-							   value="${room.getroomId()}" class="productTextField"/></td>
+							   value="<%=room.getroomId()%>" class="productTextField"/></td>
 				</tr>
 				<tr>
 					<td>Floor Number</td>
 					<td><input type="text" name="FloorNumber" size="20"
-						value="${room.getFloorNumber()}" class="productTextField"/></td>
+						value="<%=room.getFloorNumber()%>" class="productTextField"/></td>
 				</tr>
 				<tr>
 					<td>Room Type</td>
 					<td><input type="text" name="RoomType" size="20"
-						value="${room.getRoomType()}" class="productTextField"/></td>
+						value="<%=room.getRoomType()%>" class="productTextField"/></td>
 				</tr>
 				<tr>
-					<td>Available Date</td>
-					<td><input type="text" name="AvailDate" size="20"
-						value="${room.getAvailDate()}" class="productTextField"/></td>
+					<td>AC/Non-AC</td>
+					<td><input type="text" name="AC" size="20"
+						value="<%=room.getAC()%>" class="productTextField"/></td>
 				</tr>
 				<tr>
 					<td>Price Per Day</td>
 					<td><input type="text" name="PricePerDay" size="20"
-						value="${room.getPricePerDay()}" class="productTextField"/></td>
+						value="<%=room.getPricePerDay()%>" class="productTextField"/></td>
 				</tr>
 			</table>
 			<button class="actionBtn" style="margin-top:10px">Save</button>

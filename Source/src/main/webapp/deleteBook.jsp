@@ -1,15 +1,17 @@
 <%@page import="com.vgns.dao.RoomManagementDAO"%>
 <%@page import="com.vgns.pojo.Room"%>
+<%@ page import="com.vgns.dao.BookManagementDAO" %>
+<%@ page import="com.vgns.pojo.booking" %>
 
 <%
 
-    Integer roomId = Integer.parseInt(request.getParameter("roomId"));
-    Room room= RoomManagementDAO.getBookById(roomId);
-    int status1 = RoomManagementDAO.addRoom(room);
-    int status = RoomManagementDAO.deleteBook(roomId);
-    if(status == 1 && status1== 1)
+    int roomid= Integer.parseInt(request.getParameter("roomid"));
+    booking book = BookManagementDAO.getbookByroom(roomid);
+    int status = BookManagementDAO.deletebook(book);
+
+    if(status == 1)
     {
-        response.sendRedirect("viewRooms.jsp");
+        response.sendRedirect("viewBooks.jsp");
     }
     else
     {

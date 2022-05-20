@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="com.vgns.dao.RoomManagementDAO"%>
-<%@page import="com.vgns.pojo.Room"%>
-<%@page import="java.util.*"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,17 +33,19 @@
 				<tr>
 					<td>Room Type</td>
 					<td>
-					<select name="RoomType" class="productTextField">
-						<option value="standard">standard</option>
-						<option value="deluxe">deluxe</option>
-						<option value="family suite">family suite</option>
-						<option value="Quad Bedroom">Quad Bedroom</option>
-					</select>
+						<label>
+							<select name="RoomType" class="productTextField">
+								<option value="standard">standard</option>
+								<option value="deluxe">deluxe</option>
+								<option value="family suite">family suite</option>
+								<option value="Quad Bedroom">Quad Bedroom</option>
+							</select>
+						</label>
 					</td>
 				</tr>
 				<tr>
-					<td>Available Date(dd-mm-yyyy)</td>
-					<td><input type="text" name="AvailDate" size="20"
+					<td>AC/Non-AC</td>
+					<td><input type="text" name="AC" size="20"
 						class="productTextField" /></td>
 				</tr>
 				<tr>

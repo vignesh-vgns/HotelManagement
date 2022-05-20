@@ -20,8 +20,15 @@
 					<td><input type="password" id="password" name="password" class="searchTextField"/></td>
 				</tr>
 				<tr>
+					<td></td>
+					<td colspan="2" align="right">
+						<input type="submit" value="Login" class="actionBtn"/>
+					</td>
+				</tr>
+				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="Login" class="actionBtn" />
+						dont have an account!
+						<a href="register.jsp">Sign Up</a>
 					</td>
 				</tr>
 			</table>
